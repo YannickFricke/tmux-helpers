@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+currentDir=`pwd | grep -oP '((.*)\/)?\K.*' -h | tr -d -`
+
+if [ "$TMUX" = "" ]; then
+	tmux new -s "$currentDir"
+else
+	tmux new -d -s "$currentDir"
+	tmux switch -t "$currentDir"
+fi
